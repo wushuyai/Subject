@@ -1,15 +1,18 @@
 package com.jingdianjichi.subject.infra.basic.mapper;
 
 import com.jingdianjichi.subject.infra.basic.entity.SubjectCategory;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
- * 题目分类(SubjectCategory)表数据库访问层
- *
+ * (SubjectCategory)表数据库访问层
+ *定义操作数据库的方法，如 insert()、update()、queryById()
  * @author makejava
- * @since 2023-10-01 21:49:58
+ * @since 2026-04-08 20:54:06
  */
+@Mapper
 public interface SubjectCategoryDao {
 
     /**
@@ -20,12 +23,9 @@ public interface SubjectCategoryDao {
      */
     SubjectCategory queryById(Long id);
 
-    /**
-     * 统计总行数
-     *
-     * @param subjectCategory 查询条件
-     * @return 总行数
-     */
+
+
+
     long count(SubjectCategory subjectCategory);
 
     /**
@@ -68,10 +68,13 @@ public interface SubjectCategoryDao {
      * @return 影响行数
      */
     int deleteById(Long id);
+    /**
+     * 查询岗位大类
+     */
+    List<SubjectCategory> queryPrimaryCategory();
 
-    List<SubjectCategory> queryCategory(SubjectCategory subjectCategory);
+    List<SubjectCategory> queryCategoryByPrimary(SubjectCategory subjectCategory);
 
-    Integer querySubjectCount(Long id);
 
 }
 

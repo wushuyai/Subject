@@ -1,12 +1,14 @@
 package com.jingdianjichi.subject.infra.basic.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectBrief;
+
 
 /**
  * 简答题(SubjectBrief)表服务接口
  *
  * @author makejava
- * @since 2023-10-05 21:29:22
+ * @since 2026-04-14 16:00:47
  */
 public interface SubjectBriefService {
 
@@ -17,6 +19,8 @@ public interface SubjectBriefService {
      * @return 实例对象
      */
     SubjectBrief queryById(Long id);
+
+
 
     /**
      * 新增数据
@@ -41,10 +45,5 @@ public interface SubjectBriefService {
      * @return 是否成功
      */
     boolean deleteById(Long id);
-
-    /**
-     * 条件查询
-     */
-    SubjectBrief queryByCondition(SubjectBrief subjectBrief);
 
 }

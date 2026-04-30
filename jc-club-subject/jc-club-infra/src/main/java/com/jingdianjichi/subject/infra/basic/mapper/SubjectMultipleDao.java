@@ -2,13 +2,15 @@ package com.jingdianjichi.subject.infra.basic.mapper;
 
 import com.jingdianjichi.subject.infra.basic.entity.SubjectMultiple;
 import org.apache.ibatis.annotations.Param;
+
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**
  * 多选题信息表(SubjectMultiple)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-05 21:30:05
+ * @since 2026-04-14 16:02:12
  */
 public interface SubjectMultipleDao {
 
@@ -24,9 +26,10 @@ public interface SubjectMultipleDao {
      * 查询指定行数据
      *
      * @param subjectMultiple 查询条件
+     * @param pageable         分页对象
      * @return 对象列表
      */
-    List<SubjectMultiple> queryAllByLimit(SubjectMultiple subjectMultiple);
+    List<SubjectMultiple> queryAllByLimit(SubjectMultiple subjectMultiple, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数

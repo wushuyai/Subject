@@ -2,6 +2,7 @@ package com.jingdianjichi.subject.application.convert;
 
 import com.jingdianjichi.subject.application.dto.SubjectInfoDTO;
 import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -18,10 +19,12 @@ public interface SubjectInfoDTOConverter {
 
     SubjectInfoDTOConverter INSTANCE = Mappers.getMapper(SubjectInfoDTOConverter.class);
 
-    SubjectInfoBO convertDTOToBO(SubjectInfoDTO subjectInfoDTO);
+    SubjectInfoBO convertDtoToInfoBO(SubjectInfoDTO subjectInfoDTO);
+//    SubjectInfoDTO convertInfoToDTO(SubjectInfoBO subjectInfoBO);
+    SubjectInfoDTO  convertBOToDTO(SubjectInfoBO subjectInfoBO);
 
-    SubjectInfoDTO convertBOToDTO(SubjectInfoBO subjectInfoBO);
+//    SubjectInfoDTO convertBOToDTO(SubjectInfoBO subjectInfoBO);
 
-    List<SubjectInfoDTO> convertBOToDTOList(List<SubjectInfoBO> subjectInfoBO);
+//    List<SubjectInfoDTO> convertBOToDTOList(List<SubjectInfoBO> subjectInfoBO);
 
 }

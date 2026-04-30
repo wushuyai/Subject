@@ -1,9 +1,11 @@
 package com.jingdianjichi.subject.infra.basic.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectMultiple;
 import com.jingdianjichi.subject.infra.basic.mapper.SubjectMultipleDao;
 import com.jingdianjichi.subject.infra.basic.service.SubjectMultipleService;
 import org.springframework.stereotype.Service;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
  * 多选题信息表(SubjectMultiple)表服务实现类
  *
  * @author makejava
- * @since 2023-10-05 21:30:05
+ * @since 2026-04-14 16:02:12
  */
 @Service("subjectMultipleService")
 public class SubjectMultipleServiceImpl implements SubjectMultipleService {
@@ -29,6 +31,14 @@ public class SubjectMultipleServiceImpl implements SubjectMultipleService {
     public SubjectMultiple queryById(Long id) {
         return this.subjectMultipleDao.queryById(id);
     }
+
+    /**
+     * 分页查询
+     *
+     * @param subjectMultiple 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
 
 
     /**
@@ -71,8 +81,4 @@ public class SubjectMultipleServiceImpl implements SubjectMultipleService {
         this.subjectMultipleDao.insertBatch(subjectMultipleList);
     }
 
-    @Override
-    public List<SubjectMultiple> queryByCondition(SubjectMultiple subjectMultiple) {
-        return this.subjectMultipleDao.queryAllByLimit(subjectMultiple);
-    }
 }

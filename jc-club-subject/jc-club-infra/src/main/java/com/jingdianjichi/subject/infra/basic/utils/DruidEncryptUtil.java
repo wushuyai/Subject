@@ -5,14 +5,7 @@ import com.alibaba.druid.filter.config.ConfigTools;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 
-/**
- * 数据库加密util
- *
- * @author: ChickenWing
- * @date: 2023/10/1
- */
 public class DruidEncryptUtil {
-
     private static String publicKey;
 
     private static String privateKey;
@@ -30,7 +23,6 @@ public class DruidEncryptUtil {
             e.printStackTrace();
         }
     }
-
     public static String encrypt(String plainText) throws Exception {
         String encrypt = ConfigTools.encrypt(privateKey, plainText);
         System.out.println("encrypt:" + encrypt);
@@ -46,6 +38,8 @@ public class DruidEncryptUtil {
     public static void main(String[] args) throws Exception {
         String encrypt = encrypt("123456");
         System.out.println("encrypt:" + encrypt);
+        String decrypt = decrypt(encrypt);
+        System.out.println("decrypt:" + decrypt);
     }
 
 }

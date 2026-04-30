@@ -1,18 +1,18 @@
 package com.jingdianjichi.subject.infra.basic.service;
 
 import com.jingdianjichi.subject.infra.basic.entity.SubjectCategory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 /**
- * 题目分类(SubjectCategory)表服务接口
+ * (SubjectCategory)表服务接口
  *
  * @author makejava
- * @since 2023-10-01 21:50:03
+ * @since 2026-04-08 20:54:14
  */
-public interface SubjectCategoryService {
 
-    SubjectCategory insert(SubjectCategory subjectCategory);
+public interface SubjectCategoryService {
 
     /**
      * 通过ID查询单条数据
@@ -23,12 +23,27 @@ public interface SubjectCategoryService {
     SubjectCategory queryById(Long id);
 
     /**
+     * 分页查询
+     *
+     * @param subjectCategory 筛选条件
+
+     */
+
+    /**
+     * 新增数据
+     *
+     * @param subjectCategory 实例对象
+     * @return 实例对象
+     */
+    SubjectCategory insert(SubjectCategory subjectCategory);
+
+    /**
      * 修改数据
      *
      * @param subjectCategory 实例对象
      * @return 实例对象
      */
-    int update(SubjectCategory subjectCategory);
+    SubjectCategory update(SubjectCategory subjectCategory);
 
     /**
      * 通过主键删除数据
@@ -37,12 +52,11 @@ public interface SubjectCategoryService {
      * @return 是否成功
      */
     boolean deleteById(Long id);
-
     /**
      * 查询岗位大类
      */
-    List<SubjectCategory> queryCategory(SubjectCategory subjectCategory);
+    List<SubjectCategory> queryPrimaryCategory();
 
+    List<SubjectCategory> queryCategoryByPrimary(SubjectCategory subjectCategory);
 
-    Integer querySubjectCount(Long id);
 }

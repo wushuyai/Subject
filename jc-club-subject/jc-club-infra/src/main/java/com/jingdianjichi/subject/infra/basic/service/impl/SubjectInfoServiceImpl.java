@@ -1,9 +1,11 @@
 package com.jingdianjichi.subject.infra.basic.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
 import com.jingdianjichi.subject.infra.basic.mapper.SubjectInfoDao;
 import com.jingdianjichi.subject.infra.basic.service.SubjectInfoService;
 import org.springframework.stereotype.Service;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
  * 题目信息表(SubjectInfo)表服务实现类
  *
  * @author makejava
- * @since 2023-10-05 21:28:58
+ * @since 2026-04-14 16:00:06
  */
 @Service("subjectInfoService")
 public class SubjectInfoServiceImpl implements SubjectInfoService {
@@ -31,13 +33,22 @@ public class SubjectInfoServiceImpl implements SubjectInfoService {
     }
 
     /**
+     * 分页查询
+     *
+     * @param subjectInfo 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+
+
+    /**
      * 新增数据
      *
      * @param subjectInfo 实例对象
      * @return 实例对象
      */
     @Override
-    public SubjectInfo insert(SubjectInfo subjectInfo) {
+    public SubjectInfo  insert(SubjectInfo subjectInfo) {
         this.subjectInfoDao.insert(subjectInfo);
         return subjectInfo;
     }
@@ -66,7 +77,7 @@ public class SubjectInfoServiceImpl implements SubjectInfoService {
     }
 
     @Override
-    public int countByCondition(SubjectInfo subjectInfo, Long categoryId, Long labelId) {
+    public int CountByCondition(SubjectInfo subjectInfo, Long categoryId, Long labelId) {
         return this.subjectInfoDao.countByCondition(subjectInfo, categoryId, labelId);
     }
 
@@ -76,13 +87,9 @@ public class SubjectInfoServiceImpl implements SubjectInfoService {
     }
 
     @Override
-    public List<SubjectInfo> getContributeCount() {
-        return this.subjectInfoDao.getContributeCount();
+    public Long querySubjectIdCursor(Long subjectId, Long categoryId, Long labelId, int cursor) {
+        return 0L;
     }
 
-    @Override
-    public Long querySubjectIdCursor(Long subjectId, Long categoryId, Long labelId, int cursor) {
-        return this.subjectInfoDao.querySubjectIdCursor(subjectId, categoryId, labelId, cursor);
-    }
 
 }

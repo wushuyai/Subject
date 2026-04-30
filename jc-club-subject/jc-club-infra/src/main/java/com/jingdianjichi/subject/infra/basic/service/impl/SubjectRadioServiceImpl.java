@@ -1,9 +1,11 @@
 package com.jingdianjichi.subject.infra.basic.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectRadio;
 import com.jingdianjichi.subject.infra.basic.mapper.SubjectRadioDao;
 import com.jingdianjichi.subject.infra.basic.service.SubjectRadioService;
 import org.springframework.stereotype.Service;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
  * 单选题信息表(SubjectRadio)表服务实现类
  *
  * @author makejava
- * @since 2023-10-05 21:30:19
+ * @since 2026-04-14 21:01:56
  */
 @Service("subjectRadioService")
 public class SubjectRadioServiceImpl implements SubjectRadioService {
@@ -31,6 +33,14 @@ public class SubjectRadioServiceImpl implements SubjectRadioService {
     }
 
     /**
+     * 分页查询
+     *
+     * @param subjectRadio 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+
+    /**
      * 新增数据
      *
      * @param subjectRadio 实例对象
@@ -43,8 +53,8 @@ public class SubjectRadioServiceImpl implements SubjectRadioService {
     }
 
     @Override
-    public void batchInsert(List<SubjectRadio> subjectRadioList) {
-        this.subjectRadioDao.insertBatch(subjectRadioList);
+    public void batchinsert(List<SubjectRadio> subjectRadiolist) {
+        this.subjectRadioDao.insertBatch(subjectRadiolist);
     }
 
     /**
@@ -72,6 +82,6 @@ public class SubjectRadioServiceImpl implements SubjectRadioService {
 
     @Override
     public List<SubjectRadio> queryByCondition(SubjectRadio subjectRadio) {
-        return this.subjectRadioDao.queryAllByLimit(subjectRadio);
+        return List.of();
     }
 }

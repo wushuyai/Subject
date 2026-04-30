@@ -26,9 +26,14 @@ public interface SubjectLabelDao {
      *
      * @param subjectLabel 查询条件
      * @return 对象列表
+     *
+    /**
+     * 查询指定行数据
+     *
+     * @param subjectLabel 查询条件
+     * @return 对象列表
      */
     List<SubjectLabel> queryByCondition(SubjectLabel subjectLabel);
-
     /**
      * 统计总行数
      *

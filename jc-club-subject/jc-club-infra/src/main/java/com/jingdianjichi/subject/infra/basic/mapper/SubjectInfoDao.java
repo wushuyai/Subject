@@ -3,13 +3,14 @@ package com.jingdianjichi.subject.infra.basic.mapper;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
 import org.apache.ibatis.annotations.Param;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**
  * 题目信息表(SubjectInfo)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-05 21:28:57
+ * @since 2026-04-14 16:00:06
  */
 public interface SubjectInfoDao {
 
@@ -25,9 +26,10 @@ public interface SubjectInfoDao {
      * 查询指定行数据
      *
      * @param subjectInfo 查询条件
+     * @param pageable         分页对象
      * @return 对象列表
      */
-    List<SubjectInfo> queryAllByLimit(SubjectInfo subjectInfo);
+    List<SubjectInfo> queryAllByLimit(SubjectInfo subjectInfo, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数
@@ -77,7 +79,6 @@ public interface SubjectInfoDao {
      * @return 影响行数
      */
     int deleteById(Long id);
-
     int countByCondition(@Param("subjectInfo") SubjectInfo subjectInfo,
                          @Param("categoryId") Long categoryId,
                          @Param("labelId") Long labelId);
@@ -87,13 +88,5 @@ public interface SubjectInfoDao {
                                 @Param("labelId") Long labelId,
                                 @Param("start") int start,
                                 @Param("pageSize") Integer pageSize);
-
-    List<SubjectInfo> getContributeCount();
-
-    Long querySubjectIdCursor(@Param("subjectId") Long subjectId,
-                              @Param("categoryId") Long categoryId,
-                              @Param("labelId") Long labelId,
-                              @Param("cursor") int cursor);
-
 }
 

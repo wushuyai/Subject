@@ -8,7 +8,6 @@ import com.jingdianjichi.subject.common.entity.Result;
 import com.jingdianjichi.subject.domain.entity.SubjectLabelBO;
 import com.jingdianjichi.subject.domain.service.SubjectLabelDomainService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,41 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-
-/**
- * 标签controller
- *
- * @author: ChickenWing
- * @date: 2023/10/3
- */
-@RestController
-@RequestMapping("/subject/label")
 @Slf4j
+@RestController
+@RequestMapping("/subject/label")//公共前缀
 public class SubjectLabelController {
-
     @Resource
     private SubjectLabelDomainService subjectLabelDomainService;
-
-    /**
-     * 新增标签
-     */
     @PostMapping("/add")
     public Result<Boolean> add(@RequestBody SubjectLabelDTO subjectLabelDTO) {
-        try {
-            if (log.isInfoEnabled()) {
-                log.info("SubjectLabelController.add.dto:{}", JSON.toJSONString(subjectLabelDTO));
-            }
-            Preconditions.checkArgument(!StringUtils.isBlank(subjectLabelDTO.getLabelName()),
-                    "标签名称不能为空");
-            SubjectLabelBO subjectLabelBO = SubjectLabelDTOConverter.INSTANCE.convertDtoToLabelBO(subjectLabelDTO);
-            Boolean result = subjectLabelDomainService.add(subjectLabelBO);
-            return Result.ok(result);
-        } catch (Exception e) {
-            log.error("SubjectLabelController.add.error:{}", e.getMessage(), e);
-            return Result.fail("新增标签失败");
-        }
-    }
+        // 1. DTO -> BO
+        SubjectLabelBO subjectLabelBO = SubjectLabelDTOConverter.INSTANCE
+                .convertDtoToLabelBO(subjectLabelDTO);
 
+        // 2. 调用领域服务
+        subjectLabelDomainService.add(subjectLabelBO);
+
+        // 3. 返回结果
+        return Result.ok(true);
+    }
     /**
      * 更新标签
      */
@@ -88,11 +70,11 @@ public class SubjectLabelController {
             return Result.fail("删除标签失败");
         }
     }
-
-
-    /**
-     * 查询分类下标签
-     */
+//
+//
+//    /**
+//     * 查询分类下标签
+//     */
     @PostMapping("/queryLabelByCategoryId")
     public Result<List<SubjectLabelDTO>> queryLabelByCategoryId(@RequestBody SubjectLabelDTO subjectLabelDTO) {
         try {
@@ -112,3 +94,5 @@ public class SubjectLabelController {
     }
 
 }
+
+

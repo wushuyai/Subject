@@ -11,18 +11,35 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 题目分类(SubjectCategory)表服务实现类
+ * (SubjectCategory)表服务实现类
  *
  * @author makejava
- * @since 2023-10-01 21:50:05
+ * @since 2026-04-08 20:54:14
  */
 @Service("subjectCategoryService")
 @Slf4j
 public class SubjectCategoryServiceImpl implements SubjectCategoryService {
-
     @Resource
     private SubjectCategoryDao subjectCategoryDao;
 
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    @Override
+    public SubjectCategory queryById(Long id) {
+        return this.subjectCategoryDao.queryById(id);
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param subjectCategory 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
 
     /**
      * 新增数据
@@ -32,17 +49,11 @@ public class SubjectCategoryServiceImpl implements SubjectCategoryService {
      */
     @Override
     public SubjectCategory insert(SubjectCategory subjectCategory) {
-        if(log.isInfoEnabled()){
-            log.info("SubjectCategoryController.add.subjectCategory:{}"
-                    , JSON.toJSONString(subjectCategory));
+        if (log.isInfoEnabled()){
+            log.info("SubjectCategoryServiceImpl.insert.dto:{}", JSON.toJSONString(subjectCategory));
         }
         this.subjectCategoryDao.insert(subjectCategory);
         return subjectCategory;
-    }
-
-    @Override
-    public SubjectCategory queryById(Long id) {
-        return this.subjectCategoryDao.queryById(id);
     }
 
     /**
@@ -52,8 +63,9 @@ public class SubjectCategoryServiceImpl implements SubjectCategoryService {
      * @return 实例对象
      */
     @Override
-    public int update(SubjectCategory subjectCategory) {
-        return this.subjectCategoryDao.update(subjectCategory);
+    public SubjectCategory update(SubjectCategory subjectCategory) {
+        this.subjectCategoryDao.update(subjectCategory);
+        return this.queryById(subjectCategory.getId());
     }
 
     /**
@@ -67,13 +79,15 @@ public class SubjectCategoryServiceImpl implements SubjectCategoryService {
         return this.subjectCategoryDao.deleteById(id) > 0;
     }
 
+    /**
+     * 查询岗位大类
+     */
     @Override
-    public List<SubjectCategory> queryCategory(SubjectCategory subjectCategory) {
-        return this.subjectCategoryDao.queryCategory(subjectCategory);
+    public List<SubjectCategory> queryPrimaryCategory() {
+        return this.subjectCategoryDao.queryPrimaryCategory();
     }
-
     @Override
-    public Integer querySubjectCount(Long id) {
-        return this.subjectCategoryDao.querySubjectCount(id);
+    public List<SubjectCategory> queryCategoryByPrimary(SubjectCategory subjectCategory) {
+        return this.subjectCategoryDao.queryCategoryByPrimary(subjectCategory);
     }
 }

@@ -1,18 +1,19 @@
 package com.jingdianjichi.subject.infra.basic.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectJudge;
 import com.jingdianjichi.subject.infra.basic.mapper.SubjectJudgeDao;
 import com.jingdianjichi.subject.infra.basic.service.SubjectJudgeService;
 import org.springframework.stereotype.Service;
 
+
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 判断题(SubjectJudge)表服务实现类
  *
  * @author makejava
- * @since 2023-10-05 21:29:47
+ * @since 2026-04-14 16:01:27
  */
 @Service("subjectJudgeService")
 public class SubjectJudgeServiceImpl implements SubjectJudgeService {
@@ -29,6 +30,15 @@ public class SubjectJudgeServiceImpl implements SubjectJudgeService {
     public SubjectJudge queryById(Long id) {
         return this.subjectJudgeDao.queryById(id);
     }
+
+    /**
+     * 分页查询
+     *
+     * @param subjectJudge 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+
 
     /**
      * 新增数据
@@ -63,10 +73,5 @@ public class SubjectJudgeServiceImpl implements SubjectJudgeService {
     @Override
     public boolean deleteById(Long id) {
         return this.subjectJudgeDao.deleteById(id) > 0;
-    }
-
-    @Override
-    public List<SubjectJudge> queryByCondition(SubjectJudge subjectJudge) {
-        return this.subjectJudgeDao.queryAllByLimit(subjectJudge);
     }
 }

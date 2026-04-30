@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for jc-club-subject" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="E:/App/apache-maven-3.9.4/mvn-repo/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+          <entry name="E:/App/apache-maven-3.9.4/mvn-repo/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
+          <entry name="E:/App/apache-maven-3.9.4/mvn-repo/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
+        </processorPath>
+        <module name="jc-club-subject-api" />
+        <module name="jc-club-infra" />
+        <module name="jc-club-application-job" />
+        <module name="jc-club-starter" />
+        <module name="jc-club-application-controller" />
+        <module name="jc-club-common" />
+        <module name="jc-club-domain" />
+        <module name="jc-club-application-mq" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="18" />
+  </component>
+</project>

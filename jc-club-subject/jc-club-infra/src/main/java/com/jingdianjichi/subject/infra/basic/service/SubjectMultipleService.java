@@ -1,14 +1,16 @@
 package com.jingdianjichi.subject.infra.basic.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectMultiple;
 
 import java.util.List;
+
 
 /**
  * 多选题信息表(SubjectMultiple)表服务接口
  *
  * @author makejava
- * @since 2023-10-05 21:30:05
+ * @since 2026-04-14 16:02:12
  */
 public interface SubjectMultipleService {
 
@@ -19,6 +21,7 @@ public interface SubjectMultipleService {
      * @return 实例对象
      */
     SubjectMultiple queryById(Long id);
+
 
     /**
      * 新增数据
@@ -43,12 +46,7 @@ public interface SubjectMultipleService {
      * @return 是否成功
      */
     boolean deleteById(Long id);
-
-    /**
-     * 批量插入
-     */
     void batchInsert(List<SubjectMultiple> subjectMultipleList);
 
-    List<SubjectMultiple> queryByCondition(SubjectMultiple subjectMultiple);
-
+//    List<SubjectMultiple> queryByCondition(SubjectMultiple subjectMultiple);
 }

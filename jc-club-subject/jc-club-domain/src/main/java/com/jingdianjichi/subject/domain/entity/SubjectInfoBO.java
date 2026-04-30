@@ -1,8 +1,8 @@
 package com.jingdianjichi.subject.domain.entity;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.common.entity.PageInfo;
 import lombok.Data;
+import org.mapstruct.Mapper;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +13,7 @@ import java.util.List;
  * @author: ChickenWing
  * @date: 2023/10/5
  */
+
 @Data
 public class SubjectInfoBO extends PageInfo implements Serializable {
 
@@ -71,47 +72,46 @@ public class SubjectInfoBO extends PageInfo implements Serializable {
     private List<SubjectAnswerBO> optionList;
 
     private Long categoryId;
-
+//
     private Long labelId;
-
-    private String keyWord;
-
-
-    /**
-     * 创建人昵称
-     */
-    private String createUser;
-
-    /**
-     * 创建人头像
-     */
-    private String createUserAvatar;
-
-    /**
-     * 题目数量
-     */
-    private Integer subjectCount;
-
+//
+//    private String keyWord;
+//
+//    /**
+//     * 创建人昵称
+//     */
+//    private String createUser;
+//
+//    /**
+//     * 创建人头像
+//     */
+//    private String createUserAvatar;
+//
+//    /**
+//     * 题目数量
+//     */
+//    private Integer subjectCount;
+//
 
     /**
      * 是否被当前用户点赞
      */
     private Boolean liked;
-
+//
     /**
      * 当前题目点赞的数量
      */
     private Integer likedCount;
-
-    /**
-     * 下一题
-     */
-    private Long nextSubjectId;
-
-    /**
-     * 上一题
-     */
-    private Long lastSubjectId;
+//
+//    /**
+//     * 下一题
+//     */
+//    private Long nextSubjectId;
+//
+//    /**
+//     * 上一题
+//     */
+//    private Long lastSubjectId;
 
 }
 

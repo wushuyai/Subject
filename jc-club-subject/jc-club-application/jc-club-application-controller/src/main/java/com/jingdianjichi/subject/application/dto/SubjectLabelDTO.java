@@ -17,12 +17,12 @@ public class SubjectLabelDTO implements Serializable {
      * 主键
      */
     private Long id;
-    
+
     /**
      * 分类id
      */
     private Long categoryId;
-    
+
     /**
      * 标签分类
      */

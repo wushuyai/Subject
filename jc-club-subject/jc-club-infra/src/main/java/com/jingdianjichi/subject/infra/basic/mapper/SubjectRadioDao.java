@@ -2,13 +2,15 @@ package com.jingdianjichi.subject.infra.basic.mapper;
 
 import com.jingdianjichi.subject.infra.basic.entity.SubjectRadio;
 import org.apache.ibatis.annotations.Param;
+
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**
  * 单选题信息表(SubjectRadio)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-05 21:30:19
+ * @since 2026-04-14 21:01:56
  */
 public interface SubjectRadioDao {
 
@@ -24,9 +26,10 @@ public interface SubjectRadioDao {
      * 查询指定行数据
      *
      * @param subjectRadio 查询条件
+     * @param pageable         分页对象
      * @return 对象列表
      */
-    List<SubjectRadio> queryAllByLimit(SubjectRadio subjectRadio);
+    List<SubjectRadio> queryAllByLimit(SubjectRadio subjectRadio, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数

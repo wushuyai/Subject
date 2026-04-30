@@ -5,6 +5,7 @@ import com.jingdianjichi.subject.infra.basic.mapper.SubjectLabelDao;
 import com.jingdianjichi.subject.infra.basic.service.SubjectLabelService;
 import org.springframework.stereotype.Service;
 
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * 题目标签表(SubjectLabel)表服务实现类
  *
  * @author makejava
- * @since 2023-10-03 21:50:31
+ * @since 2026-04-12 22:04:14
  */
 @Service("subjectLabelService")
 public class SubjectLabelServiceImpl implements SubjectLabelService {
@@ -31,14 +32,24 @@ public class SubjectLabelServiceImpl implements SubjectLabelService {
     }
 
     /**
+     * 分页查询
+     *
+     * @param subjectLabel 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+
+
+    /**
      * 新增数据
      *
      * @param subjectLabel 实例对象
      * @return 实例对象
      */
     @Override
-    public int insert(SubjectLabel subjectLabel) {
-        return this.subjectLabelDao.insert(subjectLabel);
+    public SubjectLabel insert(SubjectLabel subjectLabel) {
+        this.subjectLabelDao.insert(subjectLabel);
+        return subjectLabel;
     }
 
     /**
@@ -48,8 +59,9 @@ public class SubjectLabelServiceImpl implements SubjectLabelService {
      * @return 实例对象
      */
     @Override
-    public int update(SubjectLabel subjectLabel) {
-        return this.subjectLabelDao.update(subjectLabel);
+    public SubjectLabel update(SubjectLabel subjectLabel) {
+        this.subjectLabelDao.update(subjectLabel);
+        return this.queryById(subjectLabel.getId());
     }
 
     /**
@@ -62,7 +74,6 @@ public class SubjectLabelServiceImpl implements SubjectLabelService {
     public boolean deleteById(Long id) {
         return this.subjectLabelDao.deleteById(id) > 0;
     }
-
     @Override
     public List<SubjectLabel> batchQueryById(List<Long> labelIdList) {
         return this.subjectLabelDao.batchQueryById(labelIdList);

@@ -2,17 +2,17 @@ package com.jingdianjichi.subject.common.entity;
 
 import com.jingdianjichi.subject.common.enums.ResultCodeEnum;
 import lombok.Data;
-
+//这是一个“统一接口返回结果”的封装类
 @Data
 public class Result<T> {
 
-    private Boolean success;
+    private Boolean success;//是否成功、
 
-    private Integer code;
+    private Integer code; //返回码
 
-    private String message;
+    private String message; //返回消息
 
-    private T data;
+    private T data; //返回数据
 
     public static Result ok(){
         Result result = new Result();
@@ -49,3 +49,4 @@ public class Result<T> {
     }
 
 }
+

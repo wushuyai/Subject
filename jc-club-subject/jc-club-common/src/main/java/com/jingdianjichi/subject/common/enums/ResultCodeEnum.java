@@ -4,7 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum ResultCodeEnum {
-
     SUCCESS(200,"成功"),
     FAIL(500,"失败");
 
@@ -25,5 +24,4 @@ public enum ResultCodeEnum {
         }
         return null;
     }
-
 }

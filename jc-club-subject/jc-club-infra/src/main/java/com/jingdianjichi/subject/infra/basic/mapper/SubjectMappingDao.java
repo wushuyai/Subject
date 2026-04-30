@@ -3,30 +3,33 @@ package com.jingdianjichi.subject.infra.basic.mapper;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectMapping;
 import org.apache.ibatis.annotations.Param;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**
  * 题目分类关系表(SubjectMapping)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-03 22:17:07
+ * @since 2026-04-13 21:38:14
  */
 public interface SubjectMappingDao {
 
     /**
      * 通过ID查询单条数据
      *
+     * @param id 主键
      * @return 实例对象
      */
-    SubjectMapping queryById(int id);
+    SubjectMapping queryById(Long id);
 
     /**
      * 查询指定行数据
      *
      * @param subjectMapping 查询条件
+     * @param pageable         分页对象
      * @return 对象列表
      */
-    List<SubjectMapping> queryAllByLimit(SubjectMapping subjectMapping);
+    List<SubjectMapping> queryAllByLimit(SubjectMapping subjectMapping, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数
@@ -72,12 +75,12 @@ public interface SubjectMappingDao {
     /**
      * 通过主键删除数据
      *
-     * @param 主键
+     * @param id 主键
      * @return 影响行数
      */
-    int deleteById(int id);
+    int deleteById(Long id);
+//    List<SubjectMapping> queryLabelId(SubjectMapping subjectMapping);
 
     List<SubjectMapping> queryDistinctLabelId(SubjectMapping subjectMapping);
-
 }
 

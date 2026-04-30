@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 public class PageResult<T> implements Serializable {
 
+
     private Integer pageNo = 1;
 
     private Integer pageSize = 20;
